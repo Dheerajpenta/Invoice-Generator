@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice page</title>
+    <style>
+        body{
+            background-color: #F6F6F6;
+            margin: 5%; 
+            font-family: Helvetica;
+            font-size: 15px;
+            height: 100%;
+            
+        }
+        h1,h2,h3,h4,h5,h6{
+            margin: 0;
+            padding: 0;
+        }
+        p{
+            margin: 0;
+            padding: 0;
+        }
+        img{
+            height: 150px; 
+            width: 200px ;
+        }
+        .container{
+            width: 80%;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        .brand-section{
+           padding: 10px 10px 10px 15px;
+        }
+        .logo{
+            width: 50%;
+        }
+
+        .row{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .col-6{
+            width: 50%;
+            text-align: left;
+        }
+        .company-details{
+            float: right;
+            text-align: right;
+        }
+        .body-section{
+            padding: 16px;
+        }
+        .heading{
+            font-size: 20px;
+            margin-bottom: 08px;
+        }
+        .sub-heading{
+            font-weight: lighter;
+            margin-bottom: 05px;
+            font-weight: lighter;
+            padding: 5px;
+        }
+        .sub-heading2{
+           margin-bottom: 05px;
+           background-color: #e4e2e2;
+           font-weight: bolder;
+           padding: 5px;
+        }
+    
+        table{
+            background-color: #f6f6f6;
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table td {
+            vertical-align: middle !important;
+            text-align: center;
+        }
+        table th, table td {
+            padding-top: 08px;
+            padding-bottom: 08px;
+        }
+        .text-white{
+            font-size: 30px;
+            margin-top: 50px;
+        }
+
+
+        .text-right{
+            text-align: end;
+        }
+        .w-10{
+            width: 10%;
+            background-color: black;
+            color: white;
+        }
+        .w-40{
+            width: 40%;
+            text-align: left;
+            background-color: black;
+            color: white;  
+            padding-left: 10px;
+        }
+        .p-40{
+            text-align: left;
+            padding-left: 10px;
+        }
+        .float-right{
+            float: right;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="brand-section">
+            <div class="row">
+                <div class="col-6">
+                    <img src="default-logo (1).png" alt="Company logo">
+                    <p class="text-black" style="padding-top: 15px;">description: {{description}}</p>
+                </div>
+                <div class="col-6">
+                    <div class="company-details">
+                        <p class="text-white">INVOICE</p>
+                        <p  >{{invoice_name}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="body-section">
+            <div class="row">
+                <div class="col-6">
+                    <p class="sub-heading" >Bill to: {{bill_to}}</p>
+                    <p class="sub-heading" >Ship to: {{ship_to}}</p>
+                </div>
+                <div class="col-6">
+                    <p class="sub-heading">Date: {{date}}</p>
+                    <p class="sub-heading">Payment terms: {{payment_terms}}</p>
+                    <p class="sub-heading">Due Date: {{due_date}}</p>
+                    <p class="sub-heading2">Balance Due: {{balence_due}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="body-section">
+            <br>
+            <table class="table-bordered">
+                <thead>
+                    <tr>
+                        <th class = "w-40">Item</th>
+                        <th class="w-10">Quantity</th>
+                        <th class="w-10">Rate</th>
+                        <th class="w-10">Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each items}}
+                    <tr>
+                        <td class="p-40">{{item}}</td>
+                        <td>{{quantity}}</td>
+                        <td>{{rate}}</td>
+                        <td>{{amount}}</td>
+                    </tr>
+                    {{/each}}
+                    <tr>
+                        <td colspan="3" class="text-right">Sub Total:</td>
+                        <td>{{sub_total}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" class="text-right">Tax:</td>
+                        <td>{{tax}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" class="text-right">Grand Total:</td>
+                        <td>{{grand_total}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" class="text-right">Amount Paid:</td>
+                        <td>{{amount_paid}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <p class="sub-heading">Notes: {{notes}}</p>
+            <p class="sub-heading">Terms: {{terms}}</p>
+        </div>
+
+    
+    </div>      
+
+</body>
+</html>
