@@ -23,7 +23,22 @@ app.use(express.urlencoded({ extended: true }))
 app.post("/invoice-generator", async(req, res)=>{
 
     //Taking Input Body :
-    const {invoice_name, description, bill_to, ship_to, date, payment_terms, due_date, balence_due, items, tax, amount_paid, notes, terms} = req.body;
+    const {invoice_name, description, bill_to, ship_to, date, payment_terms, due_date, balence_due, items, tax, amount_paid, notes, terms} = req.body; //all feilds input body must be string.
+    
+    /*ITEMS is an Array of json :
+    item, quantity, rate, amount must be mentioned in json,
+    
+    example:
+    items = [
+        {
+            "item": "car",
+            "quantity": "2",
+            "rate": "20",
+            "amount": "20,000"
+        }
+    ]
+    you can add multiple json objects in this array
+    */
 
     //Calculating Sub total :
     sub_total = 0;
